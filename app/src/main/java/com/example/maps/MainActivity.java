@@ -22,7 +22,7 @@ public class MainActivity extends AppActivity {
             @Override
             public void run() {
                 // TODO : lancement de homeActivity
-                Intent myIntent = new Intent(com.example.maps.MainActivity.this, MapsActivity.class);
+                Intent myIntent = new Intent(com.example.maps.MainActivity.this, InformationActivity.class);
                 startActivity(myIntent);
                 finish();
             }

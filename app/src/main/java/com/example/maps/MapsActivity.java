@@ -20,7 +20,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends AppActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private EditText editTextSearch;
@@ -29,6 +29,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.menu);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -51,8 +53,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Add a marker in Sydney and move the camera
         LatLng paris = new LatLng(48.8534, 2.3488);
-        mMap.addMarker(new MarkerOptions().position(paris).title("Marker in Paris"));
+        LatLng Velisi = new LatLng(48.8, 2.1833);
+        mMap.addMarker(new MarkerOptions().position(paris).title(getString(R.string.marker)));
+        mMap.addMarker(new MarkerOptions().position(Velisi).title(getString(R.string.marker)));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(paris));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(Velisi));
     }
 
     public void submit(View view) {
@@ -60,7 +65,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             FastDialog.showDialog(
                     MapsActivity.this,
                     FastDialog.SIMPLE_DIALOG,
-                    "Vous devez renseigner un lieux"
+                    "Vous devez renseigner un commerce"
             );
             return;
         }
@@ -74,7 +79,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         // requête HTTP
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = String.format(Constant.URL, editTextSearch.getText().toString(), "metric");
+        String url = String.format(Constant.URL, editTextSearch.getText().toString());
         Log.e("volley", url);
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
