@@ -4,7 +4,7 @@ public class ApiFields {
 
     private String nom_du_commerce;
     private String adresse;
-    private int telephone;
+    private String telephone;
     private String services;
     private String mail;
     private String fabrique_a_paris;
@@ -68,11 +68,11 @@ public class ApiFields {
         this.adresse = adresse;
     }
 
-    public int getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(int telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 }

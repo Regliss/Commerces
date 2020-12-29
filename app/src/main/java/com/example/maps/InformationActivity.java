@@ -95,7 +95,13 @@ public class InformationActivity extends AppCompatActivity {
         ApiCommerces api = new Gson().fromJson(json, ApiCommerces.class);
         if(api.getNhits() > 0) {
 
-            textViewNomDuCommerce.setText(api.getRecords().getFields().getNom_du_commerce());
+            textViewNomDuCommerce.setText(api.getRecords().get(0).getFields().getNom_du_commerce());
+            textViewAdresse.setText(api.getRecords().get(0).getFields().getAdresse());
+            textViewFabriqueAParis.setText(api.getRecords().get(0).getFields().getFabrique_a_paris());
+            textViewMail.setText(api.getRecords().get(0).getFields().getMail());
+            textViewServices.setText(api.getRecords().get(0).getFields().getServices());
+            textViewTelephone.setText(api.getRecords().get(0).getFields().getTelephone());
+            textViewTypeDeCommerce.setText(api.getRecords().get(0).getFields().getType_de_commerce());
 
         } else {
 
