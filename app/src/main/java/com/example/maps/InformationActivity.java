@@ -1,5 +1,6 @@
 package com.example.maps;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.util.Log;
@@ -20,7 +21,7 @@ import com.google.gson.Gson;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
-public class InformationActivity extends AppCompatActivity {
+public class InformationActivity extends AppActivity {
     private EditText editTextCity;
     private TextView textViewNomDuCommerce;
     private TextView textViewAdresse;
@@ -29,6 +30,7 @@ public class InformationActivity extends AppCompatActivity {
     private TextView textViewTypeDeCommerce;
     private TextView textViewServices;
     private TextView textViewFabriqueAParis;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class InformationActivity extends AppCompatActivity {
         textViewFabriqueAParis = findViewById(R.id.textViewFabriqueAParis);
 
     }
+
     public void submit(View view) {
         if(editTextCity.getText().toString().isEmpty()) {
             FastDialog.showDialog(
@@ -103,6 +106,7 @@ public class InformationActivity extends AppCompatActivity {
             textViewTelephone.setText(api.getRecords().get(0).getFields().getTelephone());
             textViewTypeDeCommerce.setText(api.getRecords().get(0).getFields().getType_de_commerce());
 
+
         } else {
 
 
@@ -112,5 +116,13 @@ public class InformationActivity extends AppCompatActivity {
                     "Pas de résultat"
             );
         }
+    }
+    public void showInformation(View view) {
+        Intent intentInformation = new Intent(this, MapsActivity.class);
+
+        //passage d'un paramètre
+        //intentInformation.putExtra("isInformation", false);
+
+        startActivity(intentInformation);
     }
 }

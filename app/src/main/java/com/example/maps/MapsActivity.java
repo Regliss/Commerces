@@ -1,9 +1,11 @@
 package com.example.maps;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.fragment.app.FragmentActivity;
 
@@ -24,6 +26,7 @@ public class MapsActivity extends AppActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private EditText editTextSearch;
+    private TextView textViewNomDuCommerce;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,8 @@ public class MapsActivity extends AppActivity implements OnMapReadyCallback {
         setContentView(R.layout.activity_maps);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.drawable.menu);
+        //Intent intent = getIntent();
+        //String value = intent.getStringExtra("isInformation");
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -77,30 +82,5 @@ public class MapsActivity extends AppActivity implements OnMapReadyCallback {
             );
             return;
         }
-        // requête HTTP
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url = String.format(Constant.URL, editTextSearch.getText().toString());
-        Log.e("volley", url);
-        // Request a string response from the provided URL.
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Log.e("volley", "onResponse: "+response);
-                        parseJson(response);
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("volley", "onErrorResponse: "+error);
-                parseJson(new String(error.networkResponse.data));
-            }
-        });
-        // Add the request to the RequestQueue.
-        queue.add(stringRequest);
-    }
-
-    private void parseJson(String response) {
-
     }
 }

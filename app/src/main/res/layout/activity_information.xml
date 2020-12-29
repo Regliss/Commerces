@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".InformationActivity">
+    android:orientation="vertical">
+
     <LinearLayout
         android:background="@android:color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp">
+
         <EditText
             android:id="@+id/editTextCity"
             android:padding="5dp"
@@ -20,61 +21,182 @@
             android:layout_height="wrap_content"
             android:hint="Entrez une adresse/commerce"
             android:background="@color/white"/>
+
         <Button
             android:onClick="submit"
             android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="OK"/>
-    </LinearLayout>
-    <TextView
-        android:id="@+id/textViewNomDuCommerce"
-        android:layout_marginTop="16dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="IPPUDO Louvre"/>
-    <TextView
-        android:id="@+id/textViewAdresse"
-        android:layout_marginTop="16dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="74-76 rue Jean-Jacques Rousseau"/>
-    <TextView
-        android:id="@+id/textViewTelephone"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="06 24 79 00 35"/>
-    <TextView
-        android:id="@+id/textViewMail"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="heloise.simon@chikaranomoto.com"/>
-    <TextView
-        android:id="@+id/textViewTypeDeCommerce"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Restaurant ou traiteur"/>
-    <TextView
-        android:id="@+id/textViewServices"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Livraisons à domicile, Retrait de commandes en magasin"/>
 
-    <TextView
-        android:id="@+id/textViewFabriqueAParis"
-        android:layout_width="wrap_content"
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"
-        tools:text="non" />
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+        <TextView
+            android:id="@+id/textViewLabelNomDuCommerce"
+            android:layout_marginTop="18dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom du commerce: "/>
+        <TextView
+            android:id="@+id/textViewNomDuCommerce"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="IPPUDO Louvre"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+        <TextView
+            android:id="@+id/textViewLabelAdresse"
+            android:layout_marginTop="18dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adresse: "/>
+        <TextView
+            android:id="@+id/textViewAdresse"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="74-76 rue Jean-Jacques Rousseau"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+        <TextView
+            android:id="@+id/textViewLabelTelephone"
+            android:layout_marginTop="18dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Telephone: "/>
+        <TextView
+            android:id="@+id/textViewTelephone"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="06 24 79 00 35"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+        <TextView
+            android:id="@+id/textViewLabelMail"
+            android:layout_marginTop="18dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mail: "/>
+        <TextView
+            android:id="@+id/textViewMail"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="heloise.simon@chikaranomoto.com"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+        <TextView
+            android:id="@+id/textViewLabelTypeDeCommerce"
+            android:layout_marginTop="18dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type De Commerce: "/>
+        <TextView
+            android:id="@+id/textViewTypeDeCommerce"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Restaurant ou traiteur"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+        <TextView
+            android:id="@+id/textViewLabelServices"
+            android:layout_marginTop="18dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Services: "/>
+        <TextView
+            android:id="@+id/textViewServices"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Livraisons à domicile, Retrait de commandes en magasin"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+        <TextView
+            android:id="@+id/textViewLabelFabriqueAParis"
+            android:layout_marginTop="18dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fabriqué à Paris: "/>
+
+        <TextView
+            android:id="@+id/textViewFabriqueAParis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            tools:text="non" />
+    </LinearLayout>
+
+    <Button
+        android:onClick="showInformation"
+        android:gravity="center_vertical"
+        android:text="Map"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
 </LinearLayout>
