@@ -44,11 +44,18 @@ public class InformationActivity extends AppActivity {
         textViewServices = findViewById(R.id.textViewServices);
         textViewFabriqueAParis = findViewById(R.id.textViewFabriqueAParis);
         saveFavoris = findViewById(R.id.ButtonSaveFavoris);
+
         saveFavoris.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent IntentAddToFavoris = new Intent(InformationActivity.this, FavorisActivity.class);
-                IntentAddToFavoris.putExtra("nom_du_commerce", textViewNomDuCommerce.getText());
+                //IntentAddToFavoris.putExtra("nom_du_commerce", textViewNomDuCommerce.getText());
+                //IntentAddToFavoris.putExtra("tel_du_commerce", textViewTelephone.getText());
+                //startActivity(IntentAddToFavoris);
+                Bundle extras = new Bundle();
+                extras.putString("nom_du_commerce", textViewNomDuCommerce.getText().toString());
+                extras.putString("tel_du_commerce", textViewTelephone.getText().toString());
+                IntentAddToFavoris.putExtras(extras);
                 startActivity(IntentAddToFavoris);
             }
         });
@@ -58,7 +65,7 @@ public class InformationActivity extends AppActivity {
             FastDialog.showDialog(
                     InformationActivity.this,
                     FastDialog.SIMPLE_DIALOG,
-                    "Vous devez renseigner une ville"
+                    "Vous devez renseigner un commerce"
             );
             return;
         }

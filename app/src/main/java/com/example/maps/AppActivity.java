@@ -52,4 +52,5 @@ public class AppActivity extends AppCompatActivity {
 
         return super.onCreateOptionsMenu(menu);
     }
+
 }
