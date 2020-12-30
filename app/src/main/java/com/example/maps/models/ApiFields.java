@@ -9,6 +9,11 @@ public class ApiFields {
     private String mail;
     private String fabrique_a_paris;
     private String type_de_commerce;
+    private String site_internet;
+
+    public void setSite_internet(String site_internet) {
+        this.site_internet = site_internet;
+    }
 
     public String getServices() {
         return services;
@@ -45,12 +50,6 @@ public class ApiFields {
     public String getSite_internet() {
         return site_internet;
     }
-
-    public void setSite_internet(String site_internet) {
-        this.site_internet = site_internet;
-    }
-
-    private String site_internet;
 
     public String getNom_du_commerce() {
         return nom_du_commerce;

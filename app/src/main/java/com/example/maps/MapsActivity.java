@@ -1,14 +1,11 @@
 package com.example.maps;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import androidx.fragment.app.FragmentActivity;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -21,13 +18,10 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 public class MapsActivity extends AppActivity implements OnMapReadyCallback {
-
     private GoogleMap mMap;
     private EditText editTextSearch;
     private TextView textViewNomDuCommerce;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,10 +33,9 @@ public class MapsActivity extends AppActivity implements OnMapReadyCallback {
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-                editTextSearch = findViewById(R.id.editTextSearch);
+        editTextSearch = findViewById(R.id.editTextSearch);
         mapFragment.getMapAsync(this);
     }
-
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -55,7 +48,6 @@ public class MapsActivity extends AppActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
         // Add a marker in Sydney and move the camera
         LatLng paris = new LatLng(48.8534, 2.3488);
         LatLng Velisi = new LatLng(48.8, 2.1833);
@@ -64,7 +56,6 @@ public class MapsActivity extends AppActivity implements OnMapReadyCallback {
         mMap.moveCamera(CameraUpdateFactory.newLatLng(paris));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(Velisi));
     }
-
     public void submit(View view) {
         if(editTextSearch.getText().toString().isEmpty()) {
             FastDialog.showDialog(

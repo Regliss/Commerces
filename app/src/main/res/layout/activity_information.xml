@@ -23,7 +23,7 @@
             android:background="@color/white"/>
 
         <Button
-            android:onClick="submit"
+            android:onClick="submitInformation"
             android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -98,7 +98,6 @@
             tools:text="06 24 79 00 35"/>
     </LinearLayout>
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -121,6 +120,28 @@
             tools:text="heloise.simon@chikaranomoto.com"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+        <TextView
+            android:id="@+id/textViewLabelSiteInternet"
+            android:layout_marginTop="18dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Site internet : "/>
+
+        <TextView
+            android:id="@+id/textViewSiteInternet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            tools:text="https://siteinternet.com" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -190,7 +211,8 @@
     </LinearLayout>
 
     <Button
-        android:onClick="showInformation"
+        android:id="@+id/ButtonSaveFavoris"
+        android:onClick="saveFavoris"
         android:gravity="center_horizontal"
         android:text="@string/Favoris"
         android:textColor="@color/white"

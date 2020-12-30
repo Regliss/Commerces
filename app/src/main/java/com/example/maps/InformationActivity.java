@@ -1,15 +1,13 @@
 package com.example.maps;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -20,17 +18,17 @@ import com.example.maps.models.ApiCommerces;
 import com.google.gson.Gson;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
-
 public class InformationActivity extends AppActivity {
     private EditText editTextCity;
     private TextView textViewNomDuCommerce;
     private TextView textViewAdresse;
     private TextView textViewTelephone;
     private TextView textViewMail;
+    private TextView textViewSiteInternet;
     private TextView textViewTypeDeCommerce;
     private TextView textViewServices;
     private TextView textViewFabriqueAParis;
-
+    private Button saveFavoris;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +39,21 @@ public class InformationActivity extends AppActivity {
         textViewAdresse = findViewById(R.id.textViewAdresse);
         textViewTelephone = findViewById(R.id.textViewTelephone);
         textViewMail = findViewById(R.id.textViewMail);
+        textViewSiteInternet = findViewById(R.id.textViewSiteInternet);
         textViewTypeDeCommerce = findViewById(R.id.textViewTypeDeCommerce);
         textViewServices = findViewById(R.id.textViewServices);
         textViewFabriqueAParis = findViewById(R.id.textViewFabriqueAParis);
-
+        saveFavoris = findViewById(R.id.ButtonSaveFavoris);
+        saveFavoris.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent IntentAddToFavoris = new Intent(InformationActivity.this, FavorisActivity.class);
+                IntentAddToFavoris.putExtra("nom_du_commerce", textViewNomDuCommerce.getText());
+                startActivity(IntentAddToFavoris);
+            }
+        });
     }
-
-    public void submit(View view) {
+    public void submitInformation(View view) {
         if(editTextCity.getText().toString().isEmpty()) {
             FastDialog.showDialog(
                     InformationActivity.this,
@@ -91,25 +97,23 @@ public class InformationActivity extends AppActivity {
         textViewAdresse.setText(null);
         textViewTelephone.setText(null);
         textViewMail.setText(null);
+        textViewSiteInternet.setText(null);
         textViewTypeDeCommerce.setText(null);
         textViewServices.setText(null);
         textViewFabriqueAParis.setText(null);
         // GSON
         ApiCommerces api = new Gson().fromJson(json, ApiCommerces.class);
         if(api.getNhits() > 0) {
-
             textViewNomDuCommerce.setText(api.getRecords().get(0).getFields().getNom_du_commerce());
             textViewAdresse.setText(api.getRecords().get(0).getFields().getAdresse());
             textViewFabriqueAParis.setText(api.getRecords().get(0).getFields().getFabrique_a_paris());
             textViewMail.setText(api.getRecords().get(0).getFields().getMail());
+            textViewSiteInternet.setText(api.getRecords().get(0).getFields().getSite_internet());
             textViewServices.setText(api.getRecords().get(0).getFields().getServices());
             textViewTelephone.setText(api.getRecords().get(0).getFields().getTelephone());
             textViewTypeDeCommerce.setText(api.getRecords().get(0).getFields().getType_de_commerce());
 
-
         } else {
-
-
             FastDialog.showDialog(
                     InformationActivity.this,
                     FastDialog.SIMPLE_DIALOG,
@@ -117,4 +121,5 @@ public class InformationActivity extends AppActivity {
             );
         }
     }
+
 }
