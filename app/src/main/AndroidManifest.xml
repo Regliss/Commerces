@@ -32,18 +32,24 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps">
         </activity>
         <activity
-            android:name=".InformationActivity">
+            android:name=".InformationActivity"
+            android:label="@string/Information">
+        </activity>
+        <activity
+            android:name=".FavorisActivity"
+            android:label="@string/Favoris">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

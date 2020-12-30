@@ -4,4 +4,6 @@
     <string name="ok" />
     <string name="cancel" />
     <string name="marker">Marker in Paris</string>
+    <string name="Favoris">Favoris</string>
+    <string name="Information">Information</string>
 </resources>

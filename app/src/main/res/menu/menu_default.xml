@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_favorite"
+        android:icon="@drawable/ic_baseline_star_rate_24"
+        android:title="@string/Favoris"
+        app:showAsAction="always"/>
+    <item
+        android:title="Map"
+        android:id="@+id/ActionShowMap"/>
+    <item
+        android:title="@string/Information"
+        android:id="@+id/ActionShowInformation"/>
+    <item
+        android:title="Favoris"
+        android:id="@+id/ActionShowFavoris"/>
+
+</menu>
