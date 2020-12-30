@@ -191,8 +191,8 @@
 
     <Button
         android:onClick="showInformation"
-        android:gravity="center_vertical"
-        android:text="Map"
+        android:gravity="center_horizontal"
+        android:text="@string/Favoris"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:layout_width="match_parent"

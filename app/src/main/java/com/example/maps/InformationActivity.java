@@ -117,12 +117,4 @@ public class InformationActivity extends AppActivity {
             );
         }
     }
-    public void showInformation(View view) {
-        Intent intentInformation = new Intent(this, MapsActivity.class);
-
-        //passage d'un paramètre
-        //intentInformation.putExtra("isInformation", false);
-
-        startActivity(intentInformation);
-    }
 }
