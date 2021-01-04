@@ -1,6 +1,8 @@
 package com.example.maps.models;
 
-public class ApiFields {
+import java.io.Serializable;
+
+public class ApiFields implements Serializable {
 
     private String nom_du_commerce;
     private String adresse;
@@ -8,8 +10,18 @@ public class ApiFields {
     private String services;
     private String mail;
     private String fabrique_a_paris;
+
+    public double[] getGeo_point_2d() {
+        return geo_point_2d;
+    }
+
+    public void setGeo_point_2d(double[] geo_point_2d) {
+        this.geo_point_2d = geo_point_2d;
+    }
+
     private String type_de_commerce;
     private String site_internet;
+    private double[] geo_point_2d;
 
     public void setSite_internet(String site_internet) {
         this.site_internet = site_internet;

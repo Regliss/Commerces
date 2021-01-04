@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -15,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.maps.models.ApiCommerces;
+import com.example.maps.models.ApiFields;
 import com.google.gson.Gson;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -59,6 +62,20 @@ public class InformationActivity extends AppActivity {
                 startActivity(IntentAddToFavoris);
             }
         });
+
+        // Intent depuis la carte
+        if(getIntent().getExtras() != null) {
+            ApiFields fields = (ApiFields) getIntent().getExtras().get("objet");
+            Toast.makeText(InformationActivity.this, fields.getNom_du_commerce(), Toast.LENGTH_SHORT).show();
+            textViewNomDuCommerce.setText(fields.getNom_du_commerce());
+            //textViewAdresse.setText(api.getRecords().get(0).getFields().getAdresse());
+            //textViewFabriqueAParis.setText(api.getRecords().get(0).getFields().getFabrique_a_paris());
+            //textViewMail.setText(api.getRecords().get(0).getFields().getMail());
+            //textViewSiteInternet.setText(api.getRecords().get(0).getFields().getSite_internet());
+            //textViewServices.setText(api.getRecords().get(0).getFields().getServices());
+            //textViewTelephone.setText(api.getRecords().get(0).getFields().getTelephone());
+            //textViewTypeDeCommerce.setText(api.getRecords().get(0).getFields().getType_de_commerce());
+        }
     }
     public void submitInformation(View view) {
         if(editTextCity.getText().toString().isEmpty()) {
@@ -111,6 +128,7 @@ public class InformationActivity extends AppActivity {
         // GSON
         ApiCommerces api = new Gson().fromJson(json, ApiCommerces.class);
         if(api.getNhits() > 0) {
+
             textViewNomDuCommerce.setText(api.getRecords().get(0).getFields().getNom_du_commerce());
             textViewAdresse.setText(api.getRecords().get(0).getFields().getAdresse());
             textViewFabriqueAParis.setText(api.getRecords().get(0).getFields().getFabrique_a_paris());

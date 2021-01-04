@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Commerces Paris</string>
     <string name="title_activity_maps">Map</string>
-    <string name="ok" />
-    <string name="cancel" />
+    <string name="ok">OK</string>
+    <string name="cancel">Annuler</string>
     <string name="marker">Marker in Paris</string>
     <string name="Favoris">Favoris</string>
     <string name="Information">Information</string>
