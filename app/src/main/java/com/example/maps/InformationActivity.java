@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -52,9 +53,6 @@ public class InformationActivity extends AppActivity {
             @Override
             public void onClick(View v) {
                 Intent IntentAddToFavoris = new Intent(InformationActivity.this, FavorisActivity.class);
-                //IntentAddToFavoris.putExtra("nom_du_commerce", textViewNomDuCommerce.getText());
-                //IntentAddToFavoris.putExtra("tel_du_commerce", textViewTelephone.getText());
-                //startActivity(IntentAddToFavoris);
                 Bundle extras = new Bundle();
                 extras.putString("nom_du_commerce", textViewNomDuCommerce.getText().toString());
                 extras.putString("tel_du_commerce", textViewTelephone.getText().toString());
@@ -66,18 +64,18 @@ public class InformationActivity extends AppActivity {
         // Intent depuis la carte
         if(getIntent().getExtras() != null) {
             ApiFields fields = (ApiFields) getIntent().getExtras().get("objet");
-            Toast.makeText(InformationActivity.this, fields.getNom_du_commerce(), Toast.LENGTH_SHORT).show();
             textViewNomDuCommerce.setText(fields.getNom_du_commerce());
-            //textViewAdresse.setText(api.getRecords().get(0).getFields().getAdresse());
-            //textViewFabriqueAParis.setText(api.getRecords().get(0).getFields().getFabrique_a_paris());
-            //textViewMail.setText(api.getRecords().get(0).getFields().getMail());
-            //textViewSiteInternet.setText(api.getRecords().get(0).getFields().getSite_internet());
-            //textViewServices.setText(api.getRecords().get(0).getFields().getServices());
-            //textViewTelephone.setText(api.getRecords().get(0).getFields().getTelephone());
-            //textViewTypeDeCommerce.setText(api.getRecords().get(0).getFields().getType_de_commerce());
+            textViewAdresse.setText(fields.getAdresse());
+            textViewFabriqueAParis.setText(fields.getFabrique_a_paris());
+            textViewMail.setText(fields.getMail());
+            textViewSiteInternet.setText(fields.getSite_internet());
+            textViewServices.setText(fields.getServices());
+            textViewTelephone.setText(fields.getTelephone());
+            textViewTypeDeCommerce.setText(fields.getType_de_commerce());
         }
     }
     public void submitInformation(View view) {
+        hideKeyboard();
         if(editTextCity.getText().toString().isEmpty()) {
             FastDialog.showDialog(
                     InformationActivity.this,
@@ -146,5 +144,11 @@ public class InformationActivity extends AppActivity {
             );
         }
     }
-
+    private void hideKeyboard() {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) this.getSystemService(this.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
 }

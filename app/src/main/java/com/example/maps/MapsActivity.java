@@ -3,6 +3,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,8 +41,6 @@ public class MapsActivity extends AppActivity implements OnMapReadyCallback {
         setContentView(R.layout.activity_maps);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.drawable.menu);
-        //Intent intent = getIntent();
-        //String value = intent.getStringExtra("isInformation");
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -60,30 +59,18 @@ public class MapsActivity extends AppActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        // Add a marker in Sydney and move the camera
-        //LatLng paris = new LatLng(48.8534, 2.3488);
-        //LatLng Velisi = new LatLng(48.8, 2.1833);
-        //mMap.addMarker(new MarkerOptions().position(paris).title(getString(R.string.marker)));
-        //mMap.addMarker(new MarkerOptions().position(Velisi).title(getString(R.string.marker)));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(paris));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(Velisi));
-
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
                 ApiFields fields = markers.get(marker.getId());
-                // TODO : créer une Activity DetailsActivity et envoyer l'objet Fields
-
                 Intent intentInfos = new Intent(MapsActivity.this, InformationActivity.class);
                 intentInfos.putExtra("objet", fields);
-
                 startActivity(intentInfos);
-                Toast.makeText(MapsActivity.this, "ID: "+marker.getId()+" - "+fields.getNom_du_commerce(), Toast.LENGTH_SHORT).show();
-
             }
         });
     }
     public void submitMaps(View view) {
+        hideKeyboard();
         if(editTextSearch.getText().toString().isEmpty()) {
             FastDialog.showDialog(
                     MapsActivity.this,
@@ -127,13 +114,9 @@ public class MapsActivity extends AppActivity implements OnMapReadyCallback {
         // GSON
         ApiCommerces api = new Gson().fromJson(json, ApiCommerces.class);
         if(api.getNhits() > 0) {
-
-            //textViewNomDuCommerce.setText(api.getRecords().get(i).getFields().getNom_du_commerce());
-
             mMap.clear();
             for(int i=0; i<api.getRecords().size(); i++){
                 ApiRecords commerce = api.getRecords().get(i);
-
                 LatLng position = new LatLng(commerce.getFields().getGeo_point_2d()[0], commerce.getFields().getGeo_point_2d()[1]);
                 Marker marker = mMap.addMarker(new MarkerOptions().position(position).title(commerce.getFields().getNom_du_commerce()));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 14));
@@ -147,6 +130,13 @@ public class MapsActivity extends AppActivity implements OnMapReadyCallback {
                     FastDialog.SIMPLE_DIALOG,
                     "Pas de résultat"
             );
+        }
+    }
+    private void hideKeyboard() {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) this.getSystemService(this.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
 }

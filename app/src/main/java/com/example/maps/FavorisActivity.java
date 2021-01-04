@@ -30,15 +30,21 @@ public class FavorisActivity extends AppActivity {
         //Intent intent = getIntent();
         //String nomDuCommerce = intent.getStringExtra("nom_du_commerce");
         Bundle extras = getIntent().getExtras();
-        String nom_du_commerce_string = extras.getString("nom_du_commerce");
-        String tel_du_commerce_string = extras.getString("tel_du_commerce");
+        if(extras != null) {
+            String nom_du_commerce_string = extras.getString("nom_du_commerce");
+            String tel_du_commerce_string = extras.getString("tel_du_commerce");
 
-        if (nom_du_commerce_string!=null && tel_du_commerce_string!=null){
-            Log.i("test nom commerce", "Value: " +nom_du_commerce_string);
-            ListFavoris.stringList.add(nom_du_commerce_string + "\n" + tel_du_commerce_string);
+
+            if (nom_du_commerce_string != null && tel_du_commerce_string != null) {
+                //Log.i("test nom commerce", "Value: " +nom_du_commerce_string);
+                ListFavoris.stringList.add(nom_du_commerce_string + "\n" + tel_du_commerce_string);
+                adapter.notifyDataSetChanged();
+            }
+            listViewFavoris.setAdapter(adapter);
+        } else {
             adapter.notifyDataSetChanged();
+            listViewFavoris.setAdapter(adapter);
         }
-        listViewFavoris.setAdapter(adapter);
         listViewFavoris.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {

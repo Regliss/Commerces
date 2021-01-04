@@ -19,7 +19,7 @@
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Entrez une adresse/commerce"
+            android:hint="Entrez un Commerce"
             android:background="@color/white"/>
 
         <Button
@@ -210,15 +210,21 @@
             tools:text="non" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/ButtonSaveFavoris"
-        android:onClick="saveFavoris"
-        android:gravity="center_horizontal"
-        android:text="@string/Favoris"
-        android:textColor="@color/white"
-        android:textSize="24sp"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+        <Button
+            android:id="@+id/ButtonSaveFavoris"
+            android:onClick="saveFavoris"
+            android:text="@string/Favoris"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 
 
 </LinearLayout>
